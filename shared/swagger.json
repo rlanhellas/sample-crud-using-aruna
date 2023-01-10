@@ -1,0 +1,146 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/v1/client": {
+            "put": {
+                "description": "Update a client in Postgres DB",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "summary": "Update client",
+                "parameters": [
+                    {
+                        "description": "cliente a ser atualizado",
+                        "name": "client",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/shared.Client"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/shared.Client"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new client in Postgres DB",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "summary": "Create client",
+                "parameters": [
+                    {
+                        "description": "cliente a ser criado",
+                        "name": "client",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/shared.Client"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/shared.Client"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/client/{id}": {
+            "get": {
+                "description": "Get a client from Postgres DB by id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "summary": "Get client by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "cliente a ser recuperado",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/shared.Client"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a client from Postgres DB",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "summary": "Delete client",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "cliente a ser deletado",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/shared.Client"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "shared.Client": {
+            "type": "object",
+            "properties": {
+                "birth_date": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

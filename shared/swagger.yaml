@@ -1,0 +1,94 @@
+definitions:
+  shared.Client:
+    properties:
+      birth_date:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /v1/client:
+    post:
+      consumes:
+      - application/json
+      description: Create a new client in Postgres DB
+      parameters:
+      - description: cliente a ser criado
+        in: body
+        name: client
+        required: true
+        schema:
+          $ref: '#/definitions/shared.Client'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/shared.Client'
+      summary: Create client
+      tags:
+      - v1
+    put:
+      consumes:
+      - application/json
+      description: Update a client in Postgres DB
+      parameters:
+      - description: cliente a ser atualizado
+        in: body
+        name: client
+        required: true
+        schema:
+          $ref: '#/definitions/shared.Client'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/shared.Client'
+      summary: Update client
+      tags:
+      - v1
+  /v1/client/{id}:
+    delete:
+      description: Delete a client from Postgres DB
+      parameters:
+      - description: cliente a ser deletado
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/shared.Client'
+      summary: Delete client
+      tags:
+      - v1
+    get:
+      description: Get a client from Postgres DB by id
+      parameters:
+      - description: cliente a ser recuperado
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/shared.Client'
+      summary: Get client by id
+      tags:
+      - v1
+swagger: "2.0"

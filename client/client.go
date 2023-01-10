@@ -11,13 +11,34 @@ import (
 	"strconv"
 )
 
-// Create client
+// @BasePath /v1/client
+
+// Create godoc
+//
+// @Summary      Create client
+// @Description  Create a new client in Postgres DB
+// @Tags         v1
+// @Accept       json
+// @Produce      json
+// @Param        client  body      shared.Client  true  "cliente a ser criado"
+// @Success      201  {object}  shared.Client
+// @Router       /v1/client [post]
 func Create(ctx context.Context, req any, _ gin.Params) *httpbridge.HandlerHttpResponse {
 	c := req.(*shared.Client)
 	return db.CreateWithBindHandlerHttp(ctx, c)
 }
 
-// Delete client
+// @BasePath /v1/client
+
+// Delete godoc
+//
+// @Summary      Delete client
+// @Description  Delete a client from Postgres DB
+// @Tags         v1
+// @Produce      json
+// @Param        id   path      int  true  "cliente a ser deletado"
+// @Success      201     {object}  shared.Client
+// @Router       /v1/client/{id} [delete]
 func Delete(ctx context.Context, _ any, params gin.Params) *httpbridge.HandlerHttpResponse {
 	client, err := configureClientWithParamID(params)
 	if err != nil {
@@ -28,13 +49,34 @@ func Delete(ctx context.Context, _ any, params gin.Params) *httpbridge.HandlerHt
 	return db.DeleteWithBindHandlerHttp(ctx, client)
 }
 
-// Update client
+// @BasePath /v1/client
+
+// Update godoc
+//
+// @Summary      Update client
+// @Description  Update a client in Postgres DB
+// @Tags         v1
+// @Accept       json
+// @Produce      json
+// @Param        client  body      shared.Client  true  "cliente a ser atualizado"
+// @Success      200  {object}  shared.Client
+// @Router       /v1/client [put]
 func Update(ctx context.Context, req any, _ gin.Params) *httpbridge.HandlerHttpResponse {
 	c := req.(*shared.Client)
 	return db.UpdateWithBindHandlerHttp(ctx, c)
 }
 
-// GetById client
+// @BasePath /v1/client
+
+// GetById godoc
+//
+// @Summary      Get client by id
+// @Description  Get a client from Postgres DB by id
+// @Tags         v1
+// @Produce      json
+// @Param        id   path      int  true  "cliente a ser recuperado"
+// @Success      200     {object}  shared.Client
+// @Router       /v1/client/{id} [get]
 func GetById(ctx context.Context, _ any, params gin.Params) *httpbridge.HandlerHttpResponse {
 	client, err := configureClientWithParamID(params)
 	if err != nil {

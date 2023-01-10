@@ -11,4 +11,4 @@ db:
   enabled: true
   type: postgres
   showsql: true
-  connectionstring: "host=localhost user=postgres password=mysecretpassword dbname=aruna port=5432"
+  connectionstring: "host=localhost user=postgres password=Postgres2023! dbname=aruna port=5432"
