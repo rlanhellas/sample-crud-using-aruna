@@ -2,11 +2,11 @@ module github.com/rlanhellas/sample-crud-using-aruna
 
 go 1.19
 
-replace github.com/rlanhellas/aruna => ../aruna
+//replace github.com/rlanhellas/aruna => ../aruna
 
 require (
 	github.com/gin-gonic/gin v1.8.2
-	github.com/rlanhellas/aruna v0.0.1
+	github.com/rlanhellas/aruna v0.0.2
 	github.com/swaggo/swag v1.8.1
 )
 
