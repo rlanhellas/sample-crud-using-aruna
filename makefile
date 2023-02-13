@@ -24,7 +24,7 @@ build:
 
 test: build
 	@echo "inicando testes ..."
-	go clean -testcache && go test -v -coverpkg=./... -coverprofile=coverage.out ./... | tree coveragereport.out
+	go clean -testcache && go test -v -coverpkg=./... -coverprofile=coverage.out ./... | tee coveragereport.out
 
 coverage: test
 	@echo "iniciando coverage ..."

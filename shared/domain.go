@@ -1,7 +1,7 @@
 package shared
 
 type Client struct {
-	Id        int    `json:"id" gorm:"primaryKey,type:serial"`
+	Id        int    `json:"id" gorm:"primaryKey"`
 	Name      string `json:"name"`
 	BirthDate string `json:"birth_date" gorm:"column:birth_date"`
 }

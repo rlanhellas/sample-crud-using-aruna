@@ -3,6 +3,7 @@ package client
 import (
 	"context"
 	"errors"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/rlanhellas/aruna/db"
 	"github.com/rlanhellas/aruna/httpbridge"
@@ -25,6 +26,10 @@ import (
 // @Router       /v1/client [post]
 func Create(ctx context.Context, req any, _ gin.Params) *httpbridge.HandlerHttpResponse {
 	c := req.(*shared.Client)
+	c.Id = int(db.GetSequenceId("client_table_id_seq"))
+	var ct shared.Client
+	db.ExecSQL("SELECT * FROM client_table", &ct)
+	fmt.Println(ct)
 	return db.CreateWithBindHandlerHttp(ctx, c)
 }
 
