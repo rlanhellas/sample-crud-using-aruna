@@ -27,7 +27,7 @@ func main() {
 				},
 			},
 		},
-		MigrateTables: []any{&shared.Client{}},
+		MigrateTables: []any{&shared.Client{}, &shared.Language{}},
 		BackgroundTask: func(ctx context.Context) {
 			token, err := security.GetTokenJwt()
 			if err != nil {

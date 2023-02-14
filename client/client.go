@@ -3,13 +3,13 @@ package client
 import (
 	"context"
 	"errors"
-	"fmt"
+	"net/http"
+	"strconv"
+
 	"github.com/gin-gonic/gin"
 	"github.com/rlanhellas/aruna/db"
 	"github.com/rlanhellas/aruna/httpbridge"
 	"github.com/rlanhellas/sample-crud-using-aruna/shared"
-	"net/http"
-	"strconv"
 )
 
 // @BasePath /v1/client
@@ -27,9 +27,13 @@ import (
 func Create(ctx context.Context, req any, _ gin.Params) *httpbridge.HandlerHttpResponse {
 	c := req.(*shared.Client)
 	c.Id = int(db.GetSequenceId("client_table_id_seq"))
-	var ct shared.Client
-	db.ExecSQL("SELECT * FROM client_table", &ct)
-	fmt.Println(ct)
+
+	l := shared.Language{Id: 10, Name: "portuguese"}
+	db.Create(ctx, &l)
+
+	//c.Languages = []shared.Language{{Name: "english"}}
+	c.Languages = []shared.Language{l}
+
 	return db.CreateWithBindHandlerHttp(ctx, c)
 }
 
@@ -89,7 +93,7 @@ func GetById(ctx context.Context, _ any, params gin.Params) *httpbridge.HandlerH
 			StatusCode: http.StatusBadRequest}
 	}
 
-	return db.GetByIdWithBindHandlerHttp(ctx, client)
+	return db.GetByIdWithBindHandlerHttp(ctx, client, []string{"Languages"})
 }
 
 func configureClientWithParamID(params gin.Params) (*shared.Client, error) {

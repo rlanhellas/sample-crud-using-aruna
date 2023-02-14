@@ -13,7 +13,7 @@ db:
   showsql: true
   connectionstring: "host=localhost user=postgres password=Postgres2023! dbname=aruna port=5432"
 security:
-  enabled: true
+  enabled: false
   clientid: aruna
   clientsecret: bfd43856-1320-4703-b029-951abb60dbba
   tokenuri: https://sso-plataformagt.gtconsultoria.com.br/auth/realms/plataformagt/protocol/openid-connect/token
