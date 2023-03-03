@@ -6,8 +6,6 @@ import (
 
 	"github.com/rlanhellas/aruna"
 	"github.com/rlanhellas/aruna/httpbridge"
-	"github.com/rlanhellas/aruna/logger"
-	"github.com/rlanhellas/aruna/security"
 	"github.com/rlanhellas/sample-crud-using-aruna/client"
 	"github.com/rlanhellas/sample-crud-using-aruna/shared"
 )
@@ -29,12 +27,7 @@ func main() {
 		},
 		MigrateTables: []any{&shared.Client{}, &shared.Language{}},
 		BackgroundTask: func(ctx context.Context) {
-			token, err := security.GetTokenJwt()
-			if err != nil {
-				panic(err)
-			}
-
-			logger.Info(ctx, token.AccessToken)
+			//
 		},
 	})
 }
