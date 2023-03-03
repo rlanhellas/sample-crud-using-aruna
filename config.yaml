@@ -9,6 +9,7 @@ http:
   port: 8080
 db:
   enabled: true
+  schema: other
   type: postgres
   showsql: true
   connectionstring: "host=localhost user=postgres password=Postgres2023! dbname=aruna port=5432"

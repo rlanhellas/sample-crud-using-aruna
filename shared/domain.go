@@ -4,7 +4,7 @@ type Client struct {
 	Id        int        `json:"id" gorm:"primaryKey"`
 	Name      string     `json:"name"`
 	BirthDate string     `json:"birth_date" gorm:"column:birth_date"`
-	Languages []Language `gorm:"many2many:test.client_languages"`
+	Languages []Language `gorm:"many2many:client_languages"`
 }
 
 type Language struct {
@@ -26,7 +26,7 @@ func (c *Client) Clone() any {
 }
 
 func (c *Client) TableName() string {
-	return "test.client_table"
+	return "client_table"
 }
 
 func NewLanguage() any {
@@ -43,5 +43,5 @@ func (l *Language) Clone() any {
 }
 
 func (l *Language) TableName() string {
-	return "test.language_table"
+	return "language_table"
 }
