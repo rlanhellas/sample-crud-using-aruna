@@ -22,6 +22,7 @@ func main() {
 					{Path: "/:id", Method: http.MethodDelete, Handler: client.Delete},
 					{Path: "/", Method: http.MethodPut, Handler: client.Update, HandlerInputGenerator: shared.NewClient},
 					{Path: "/:id", Method: http.MethodGet, Handler: client.GetById},
+					{Path: "/", Method: http.MethodGet, Handler: client.ListByName},
 				},
 			},
 		},

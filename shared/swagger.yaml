@@ -5,6 +5,17 @@ definitions:
         type: string
       id:
         type: integer
+      languages:
+        items:
+          $ref: '#/definitions/shared.Language'
+        type: array
+      name:
+        type: string
+    type: object
+  shared.Language:
+    properties:
+      id:
+        type: integer
       name:
         type: string
     type: object
@@ -12,6 +23,27 @@ info:
   contact: {}
 paths:
   /v1/client:
+    get:
+      description: Get a list of clients based on name
+      parameters:
+      - description: page to be used
+        in: query
+        name: page
+        type: integer
+      - description: nome to filter
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/shared.Client'
+      summary: Get clients by name
+      tags:
+      - v1
     post:
       consumes:
       - application/json

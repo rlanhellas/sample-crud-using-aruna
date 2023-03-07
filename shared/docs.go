@@ -17,6 +17,38 @@ const docTemplate = `{
     "basePath": "{{.BasePath}}",
     "paths": {
         "/v1/client": {
+            "get": {
+                "description": "Get a list of clients based on name",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "summary": "Get clients by name",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "page to be used",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "nome to filter",
+                        "name": "name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/shared.Client"
+                        }
+                    }
+                }
+            },
             "put": {
                 "description": "Update a client in Postgres DB",
                 "consumes": [
@@ -146,6 +178,23 @@ const docTemplate = `{
                 "birth_date": {
                     "type": "string"
                 },
+                "id": {
+                    "type": "integer"
+                },
+                "languages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/shared.Language"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "shared.Language": {
+            "type": "object",
+            "properties": {
                 "id": {
                     "type": "integer"
                 },
